@@ -4,6 +4,7 @@ class Cidade(models.Model):
     uf = models.CharField(max_length=2, verbose_name="UF")
     def __str__(self):
         return f"{self.nome}, {self.uf}"
+    
     class Meta:
         verbose_name = "Cidade"
         verbose_name_plural = "Cidades"
@@ -43,7 +44,7 @@ class Genero(models.Model):
         verbose_name = "Gênero"
         verbose_name_plural = "Gêneros"
 
-class Livro(models.Model):
+class Livros(models.Model):
     nome = models.CharField(max_length=100, verbose_name="Nome do livro")
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE, verbose_name="Autor do livro")
     editora = models.ForeignKey(Editora, on_delete=models.CASCADE, verbose_name="Editora do livro")
@@ -57,6 +58,19 @@ class Livro(models.Model):
     class Meta:
         verbose_name = "Livro"
         verbose_name_plural = "Livros"
+class Emprestimo(models.Model):
+    dataemprestimo = models.dataField(verbose_name="Data de emprestimo")
+    livro = models.ForeignKey(Livros, on_delete = models.CASCADE, verbose_name="Livro") 
+    datadevolucao = models.DateField(verbose_name="Data de Devolucao")
+    leitor = models.ForeignKey(Leitor, on_delete = models.CASCADE, verbose_name="Leitor") 
+    def _str__(self):
+        return f'{self.dataemprestimo}, {self.livro}, {self.datadevolucao}, {self.leitor}'
+    
+class Meta :
+    verbose_name = "Emprestimo"
+    verbose_name_plural = "Emprestimos"
+
+
         
 
 

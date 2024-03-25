@@ -6,7 +6,7 @@ admin.site.register(Cidade)
 admin.site.register(Autor)
 admin.site.register(Editora)
 admin.site.register(Leitor)
-admin.site.register(Livro)
+admin.site.register(Livros)
 admin.site.register(Genero)
 
 
